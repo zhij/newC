@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="keywords" content="广州市,嘻嘻,科技,嘻嘻科技" />
+    <meta name="description" content="广州市嘻嘻科技有限公司官网" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CC - Cos&Chat</title>
+	<link rel="stylesheet" href="css/style-m.css?v=1">
+	<script type="text/javascript">
+		// 重定向到PC
+        if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent)) {
+            window.location.href = 'index.html';
+        }
+	</script>
+</head>
+<body>
+	<div class="g-doc">
+		<div class="g-hd">
+			<ul id="j-txtgroup" class="m-txtgroup"></ul>
+			<div class="g-sec g-sec-1">
+				<div id="j-logo" class="m-logo"> 
+					<div class="water"></div>
+				</div>
+				<div class="m-btngroup">
+					<a target="_blank" href="//www.m1page.com/s/vyn4mo" class="u-btn u-btn-team"></a>
+					<img class="center" src="img/cos-chat.png" alt="">
+					<a target="_blank" href="//bbs.coschat.com/" class="u-btn u-btn-bbs"></a>
+				</div>
+			</div>
+		</div>
+		<div class="g-sec g-sec-2">
+			<div class="m-phone">
+				<video id="j-video1" data-autoplay="" loop="loop" src="img/video1.mp4" class="video-tvc" poster="" muted="muted">抱歉，您的浏览器不支持内嵌视频</video>
+				<div id="j-poster1" class="poster"></div>
+			</div>
+			<div class="m-des">
+				<h2>再不Cos着聊天你就Out啦</h2>
+				<div class="txt1">
+					<h3>打破传统的码字、发语音、斗表情的聊天方式，
+					<h3>以全新“动起来”的二次元聊天形式，</h3>
+					<h3>成为第五代人类首选的社交产品。</h3>
+				</div>
+				<div class="txt2">
+					<h3>三次元明星、二次元角色最新最火的服装、动作和口头禅，你能想到的我们都有。一边Cos一边和小伙伴聊天，自己的阿凡达随着对话动起来！</h3>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="g-line"></div> -->
+		<img class="g-line-m" src="img/line-m.png" alt="">
+		<div class="g-sec">
+			<div class="m-screen">
+				<video id="j-video2" data-autoplay="" loop="loop" src="img/video2.mp4" class="video-tvc" poster="">抱歉，您的浏览器不支持内嵌视频</video>
+				<div id="j-poster2" class="poster"></div>
+			</div>
+		</div>
+		<div class="g-sec g-ft">
+			<img class="wechat-qrcode" src="img/wechat-qrcode-m.png" alt="">
+			<div class="icons">
+				<p class="follow">- 关注我们 -</p>
+				<div class="ovh">
+					<a target="_blank" href="javascript:;" class="wechat"></a>
+					<a target="_blank" href="//weibo.com/u/6461154466" class="weibo"></a>
+				</div>
+				<p class="long">长按二维码识别</p>
+			</div>
+			<img class="weibo-qrcode" src="img/weibo-qrcode.png" alt="">
+		</div>
+	</div>
+	<div class="m-fixed">
+		<div class="logo"></div>
+		<a href="//www.pgyer.com/coschat" class="download"></a>
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var txtGroups = [
+				'别盯着我看',
+				'你往下滚动看看啊',
+				'干嘛还盯着我',
+				'不要再盯着我啦',
+				'你再盯信不信我叫给你看',
+				''
+			]
+
+			function RandomNumBoth(Min,Max){
+			      var Range = Max - Min;
+			      var Rand = Math.random();
+			      var num = Min + Math.round(Rand * Range);
+			      return num;
+			}
+
+			var strHtml = '';
+			for(var i=0; i<txtGroups.length; i++){
+				strHtml += '<li style="top:'+RandomNumBoth(10,60)+'px">'+txtGroups[i]+'</li>';
+			}
+			$('#j-txtgroup').html(strHtml);
+
+			function timer1(){
+				var txtMoveTimer = setTimeout(function(){
+					$('#j-txtgroup').addClass('move');
+				}, 5000)
+				var logoToggleStart = setTimeout(function(){
+					$('#j-logo').attr('class','m-logo-toggle');
+				}, 15000)
+				var logoToggleEnd = setTimeout(function(){
+					$('#j-logo').attr('class','m-logo');
+					$('#j-txtgroup').removeClass('move');
+					clearTimeout(logoToggleStart);
+					clearTimeout(logoToggleEnd);
+				}, 19000)
+			}
+			function timer2(){
+				var txtMoveTimer = setTimeout(function(){
+					$('#j-txtgroup').addClass('move');
+				}, 1000)
+				var logoToggleStart = setTimeout(function(){
+					$('#j-logo').attr('class','m-logo-toggle');
+				}, 11000)
+				var logoToggleEnd = setTimeout(function(){
+					$('#j-logo').attr('class','m-logo');
+					$('#j-txtgroup').removeClass('move');
+					clearTimeout(logoToggleStart);
+					clearTimeout(logoToggleEnd);
+				}, 15000)
+			}
+			timer1();
+			setInterval(function(){
+				timer2();
+			},19000)
+
+			var video2 = $('#j-video2');
+			var poster2 = $('#j-poster2');
+			poster2.click(function(){
+				if(video2[0].paused){
+			        video2[0].play();
+			        $(this).hide();
+			    }else{
+			        video2.pause();
+			    }
+			})
+			video2.click(function(){
+				if(this.paused){
+			        this.play();
+			    }else{
+			        this.pause();
+			        poster2.show();
+			    }
+			})
+
+			var video1 = $('#j-video1');
+			var poster1 = $('#j-poster1');
+			poster1.click(function(){
+				if(video1[0].paused){
+			        video1[0].play();
+			        $(this).hide();
+			    }else{
+			        video1.pause();
+			    }
+			})
+			video1.click(function(){
+				if(this.paused){
+			        this.play();
+			    }else{
+			        this.pause();
+			        poster1.show();
+			    }
+			})
+
+			
+
+			$('#j-btndownload').mouseover(function(){
+				$('.u-btn-ios, .u-btn-android').css('visibility','hidden');
+			}).mouseout(function(){
+				$('.u-btn-ios, .u-btn-android').css('visibility','visible');
+			})
+
+		})
+	</script>
+</body>
+</html>
