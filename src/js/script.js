@@ -2,44 +2,60 @@ $('#nav-list li').not(".book").mouseover(function(){
 	$(this).addClass("hover");
 }).mouseout(function(){
 	$(this).removeClass("hover");
-}).click(function(){
-	$(this).addClass("active").siblings("li").removeClass("active");
+})
+$('#nav-list .link-item').click(function(){
+	$(this).parents("li").addClass("active").siblings("li").removeClass("active");
 })
 
 var heightList = [];
 var container = $(".g-container");
+var h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height();
 function calcHeight() {
-	var scrollY = 633;
+	var scrollY = h;
 	heightList.push(scrollY);
-	for(var i=0; i<container.length; i++){
+	for(var i=0; i<container.length-1; i++){
 		scrollY += container[i].clientHeight;
 		heightList.push(scrollY);
 	}
+	console.log(heightList)
 }
 
 calcHeight();
 
-var h = $('.g-wrp').height() + $('.g-header').height() - $('.g-nav').height();
 $(document).scroll(function(){
-	if($(document).scrollTop() >= 637){
+	console.log(heightList)
+	console.log($(document).scrollTop())
+	if($(document).scrollTop() > h){
 		$('.g-nav').addClass('fixed');
 	} else {
 		$('.g-nav').removeClass('fixed');
 	}
+	// 返回顶部按钮
+	var screenHeight = document.documentElement.clientHeight || window.innerHeight || 750;
+	if($(document).scrollTop() >= screenHeight) {
+		$(".g-totop").fadeIn();
+	} else {
+		$(".g-totop").fadeOut();
+	}
+
 	for(var i=0; i<heightList.length; i++){
 		if($(document).scrollTop() >= heightList[i] && $(document).scrollTop() < heightList[i+1]){
-			if(i == 4){
-				i = 5;
-			}
-			$("#nav-list li").removeClass('active')
-			$("#nav-list li").eq(i).addClass('active')
+			console.log(1)
+				$("#nav-list .link-item").parents("li").removeClass('active')
+				$("#nav-list .link-item").eq(i).parents("li").addClass('active')
+			
+		} else if($(document).scrollTop() >= heightList[heightList.length-1]){
+			console.log(2)
+			$("#nav-list .link-item").parents("li").removeClass('active')
+			$("#nav-list .link-item").eq(heightList.length-1).parents("li").addClass('active')
 		}
 	}		
 })
+// 导航跳转到对应区域
 $(".link-item").click(function(){
 	var index = $(this).attr('index');
 	var scrollY = heightList[index];
-	window.scrollTo(0, scrollY)
+	$('html').animate({ scrollTop: scrollY }, 700);
 })
 
 // 更多资讯
@@ -49,4 +65,9 @@ $('#js-more').click(function(){
 	} else {
 		$('#js-mask').slideUp();
 	}
+})
+
+// 返回顶部
+$(".scroll-top").click(function(){
+	 $('html').animate({ scrollTop: 0 }, 700);
 })
