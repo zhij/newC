@@ -12,6 +12,7 @@ var container = $(".g-container");
 
 var h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height();
 function calcHeight() {
+	console.log(h)
 	heightList = [];
 	var scrollY = h;
 	heightList.push(scrollY);
@@ -19,6 +20,7 @@ function calcHeight() {
 		scrollY += container[i].clientHeight;
 		heightList.push(scrollY);
 	}
+	console.log(heightList)
 }
 
 calcHeight();
@@ -39,10 +41,12 @@ $(document).scroll(function(){
 
 	for(var i=0; i<heightList.length; i++){
 		if($(document).scrollTop() >= heightList[i] && $(document).scrollTop() < heightList[i+1]){
+			console.log(1)
 				$("#nav-list .link-item").parents("li").removeClass('active')
 				$("#nav-list .link-item").eq(i).parents("li").addClass('active')
 			
 		} else if($(document).scrollTop() >= heightList[heightList.length-1]){
+			console.log(2)
 			$("#nav-list .link-item").parents("li").removeClass('active')
 			$("#nav-list .link-item").eq(heightList.length-1).parents("li").addClass('active')
 		}
@@ -58,14 +62,11 @@ $(".link-item").click(function(){
 // 更多资讯
 $('#js-more').click(function(){
 	if($('#js-mask').css("display") == 'none'){
-		$('#js-mask').slideDown(function(){
-			h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height() + parseInt($('#js-mask').height())
-		});
-		
+		$('#js-mask').slideDown();
+		h += parseInt($('#js-mask').height());
 	} else {
-		$('#js-mask').slideUp(function(){
-			h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height();
-		});
+		$('#js-mask').slideUp();
+		h -= parseInt($('#js-mask').height());
 	}
 	calcHeight();
 })
