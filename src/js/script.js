@@ -19,6 +19,7 @@ function calcHeight() {
 		scrollY += container[i].clientHeight;
 		heightList.push(scrollY);
 	}
+	console.log(heightList)
 }
 
 calcHeight();
@@ -60,14 +61,15 @@ $('#js-more').click(function(){
 	if($('#js-mask').css("display") == 'none'){
 		$('#js-mask').slideDown(function(){
 			h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height() + parseInt($('#js-mask').height())
+			calcHeight();
 		});
-		
+
 	} else {
 		$('#js-mask').slideUp(function(){
 			h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height();
+			calcHeight();
 		});
 	}
-	calcHeight();
 })
 
 // 返回顶部
