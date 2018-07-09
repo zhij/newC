@@ -353,7 +353,7 @@ body {
   justify-content: space-between;
   background-color: #333;
   padding: .25rem;
-  margin-bottom: 1.15rem;
+  padding-bottom: 1.4rem;
   border-bottom: 1px solid #444444;
   overflow: hidden; }
   .g-ft .wechat-qrcode, .g-ft .weibo-qrcode {
@@ -477,7 +477,7 @@ body {
   -webkit-align-items: center;
   -moz-box-align: center;
   align-items: center;
-  color: #ccc; }
+  color: #333; }
 
 .menu-layer li i {
   width: 100%;
