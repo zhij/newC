@@ -12,6 +12,7 @@ var container = $(".g-container");
 
 var h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height();
 function calcHeight() {
+	console.log(h)
 	heightList = [];
 	var scrollY = h;
 	heightList.push(scrollY);
@@ -40,10 +41,12 @@ $(document).scroll(function(){
 
 	for(var i=0; i<heightList.length; i++){
 		if($(document).scrollTop() >= heightList[i] && $(document).scrollTop() < heightList[i+1]){
+			console.log(1)
 				$("#nav-list .link-item").parents("li").removeClass('active')
 				$("#nav-list .link-item").eq(i).parents("li").addClass('active')
 			
 		} else if($(document).scrollTop() >= heightList[heightList.length-1]){
+			console.log(2)
 			$("#nav-list .link-item").parents("li").removeClass('active')
 			$("#nav-list .link-item").eq(heightList.length-1).parents("li").addClass('active')
 		}
@@ -52,24 +55,20 @@ $(document).scroll(function(){
 // 导航跳转到对应区域
 $(".link-item").click(function(){
 	var index = $(this).attr('index');
-	var scrollY = heightList[index]+3;
+	var scrollY = heightList[index];
 	$('html').animate({ scrollTop: scrollY }, 700);
 })
 
 // 更多资讯
 $('#js-more').click(function(){
 	if($('#js-mask').css("display") == 'none'){
-		$('#js-mask').slideDown(function(){
-			h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height() + parseInt($('#js-mask').height())
-			calcHeight();
-		});
-
+		$('#js-mask').slideDown();
+		h += parseInt($('#js-mask').height());
 	} else {
-		$('#js-mask').slideUp(function(){
-			h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height();
-			calcHeight();
-		});
+		$('#js-mask').slideUp();
+		h -= parseInt($('#js-mask').height());
 	}
+	calcHeight();
 })
 
 // 返回顶部

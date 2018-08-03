@@ -7,32 +7,35 @@ var browserSync = require('browser-sync');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var htmlmin = require('gulp-htmlmin');
+var rename = require('gulp-rename');
 
 // 编译sass
 gulp.task('sass', function(){
-	return gulp.src('src/sass/*.scss')
+	return gulp.src('src/**/*.scss')
 		.pipe(sass())
 		.pipe(autoprefixer({
             browsers: ['> 1%', 'last 3 versions', 'Firefox >= 20', 'iOS >=7'],
             cascade: false
         }))
-		.pipe(gulp.dest('src/css'))
+        .pipe(rename(function (path) {
+            path.dirname = path.dirname.replace('sass', 'css') 
+         }))
+        .pipe(gulp.dest('src/'))
 		.pipe(browserSync.reload({
 	      	stream: true
 	    }))
 })
 
 gulp.task('minjs', function(){
-	return gulp.src('src/js/*.js')
-		// .pipe(jshint())
-		.pipe(uglify())
-		.pipe(gulp.dest('dist/js'))
+	return gulp.src('src/**/*.js')
+        .pipe(uglify())
+		.pipe(gulp.dest('dist/'))
 })
 
 gulp.task('watch', ['browserSync', 'sass'], function(){
-	gulp.watch('src/sass/*.scss', ['sass']);
-	gulp.watch('src/*.html', browserSync.reload);
-  	gulp.watch('src/js/*.js', browserSync.reload);
+	gulp.watch('src/**/*.scss', ['sass']);
+	gulp.watch('src/**/*.html', browserSync.reload);
+  	gulp.watch('src/**/*.js', browserSync.reload);
 })
 
 gulp.task('browserSync', function() {
@@ -48,15 +51,15 @@ gulp.task('clear', function(){
 })
 
 gulp.task('img', function() {
-    return gulp.src('src/img/*')
-        .pipe(gulp.dest('dist/img'))
+    return gulp.src('src/**/img/*')
+        .pipe(gulp.dest('dist/'))
 })
 
 // 压缩css
 gulp.task('mincss', ['sass'], function() {
-    return gulp.src('src/css/*.css')
+    return gulp.src('src/**/*.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('dist/'))
 })
 
 // 压缩html
@@ -71,7 +74,7 @@ gulp.task('minhtml', function () {
         minifyJS: true,//压缩页面JS
         minifyCSS: true//压缩页面CSS
     };
-    gulp.src('src/*.html')
+    gulp.src('src/**/*.html')
         .pipe(htmlmin(options))
         .pipe(gulp.dest('dist/'));
 });
