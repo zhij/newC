@@ -55,10 +55,16 @@ gulp.task('img', function() {
         .pipe(gulp.dest('dist/'))
 })
 
-// 压缩css
-gulp.task('mincss', ['sass'], function() {
+// 复制css
+gulp.task('copycss', ['sass'], function() {
     return gulp.src('src/**/*.css')
-        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('dist/'))
+})
+
+// 压缩css
+gulp.task('mincss', ['copycss'], function() {
+    return gulp.src('dist/**/*.css')
+        .pipe(cleanCSS({compatibility: 'ie8', rebase: false}))
         .pipe(gulp.dest('dist/'))
 })
 

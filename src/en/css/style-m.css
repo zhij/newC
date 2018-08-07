@@ -93,14 +93,15 @@ body {
       .g-header .slide1 .top .logo {
         width: 3.02rem;
         height: 1.42rem;
-        margin: .5rem auto .4rem; }
+        margin: .5rem auto .2rem; }
       .g-header .slide1 .top .p1 {
-        width: 5.3rem;
-        height: 1.66rem; }
+        width: 5.24rem;
+        height: 2.39rem; }
     .g-header .slide1 .bottom .m-phone {
       position: relative;
       width: 6.58rem;
       height: 7.69rem;
+      margin-top: -.4rem;
       background: url(../img/m-phone-bg.png) no-repeat center;
       background-size: cover; }
       .g-header .slide1 .bottom .m-phone video, .g-header .slide1 .bottom .m-phone .poster {
@@ -159,7 +160,7 @@ body {
 .g-wrp .b2 p {
   line-height: 23px;
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   text-align: center; }
 
 .g-item1 {
@@ -174,26 +175,28 @@ body {
     z-index: -1; }
   .g-item1 .main {
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 50%;
     width: 100%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); }
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0); }
     .g-item1 .main .b1 {
-      padding-top: .95rem; }
+      padding-top: .6rem; }
       .g-item1 .main .b1 p {
         color: #F2D306; }
     .g-item1 .main .b2 {
-      margin-top: .65rem; }
+      margin-top: .60rem; }
+      .g-item1 .main .b2 p {
+        line-height: 20px; }
 
 .g-item2 {
   padding: .4rem 0 .8rem 0;
   background-color: #000; }
   .g-item2 .bg {
     display: block;
-    width: 6.46rem;
-    height: 7.16rem;
+    width: 7.31rem;
+    height: 7.13rem;
     margin: 0 auto; }
   .g-item2 .main .b2 {
     margin-top: .4rem; }
@@ -279,10 +282,11 @@ body {
     margin-top: .4rem; }
 
 .g-item5-1 {
+  margin-top: -1px;
   background: #000 url(../img/m-item5-bg2.png) no-repeat center 1.5rem;
   background-size: 4rem 3.98rem; }
   .g-item5-1 .main .b1 {
-    padding-top: .95rem; }
+    padding-top: .35rem; }
     .g-item5-1 .main .b1 p {
       color: #1ED6FF; }
     .g-item5-1 .main .b1 .sub {
@@ -527,7 +531,7 @@ body {
   background: #eeeeee; }
 
 .menu-layer li b {
-  width: 75px;
+  width: 105px;
   -ms-flex-negative: 0;
   -webkit-flex-shrink: 0;
   flex-shrink: 0;

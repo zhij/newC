@@ -547,11 +547,11 @@ body {
 		}
 		.ios, .andriod {
 			display: inline-block;
-			width: 80px;
-			height: 40px;
 			margin-right: 10px;
 		}
 		.ios {
+			width: 80px;
+			height: 40px;
 			background: url(data:image/png;base64,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) no-repeat center;
 			background-size: cover;
 			&:hover {
@@ -560,11 +560,13 @@ body {
 			}
 		}
 		.andriod {
-			background: url(data:image/png;base64,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) no-repeat center;
+			width: 120px;
+			height: 40px;
+			background: url(../img/ico-andriod.png) no-repeat center;
 			background-size: cover;
 			&:hover {
 				background: url(../img/ico-andriod-hover.png) no-repeat center;
-				background-size: 80px 40px;
+				background-size: 120px 40px;
 			}
 		}
 	}
@@ -630,4 +632,24 @@ body {
 		background-size: 50px 50px; 
 		cursor: pointer;
 	}	
+}
+.translations {
+	margin-top: 45px;
+	a {
+		padding: 0 12px;
+		font-size: 14px;
+		color: #fff;
+		border-right: 1px solid #fff;
+		cursor: pointer;
+		&.active {
+			color: #FCDC00;
+		}
+		&:last-child {
+			padding-right: 0;
+			border-right: none;
+		}
+		&:hover {
+			color: #FCDC00;
+		}
+	}
 }
