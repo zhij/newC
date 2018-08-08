@@ -581,3 +581,22 @@ body {
 .menu-layer .current a{
   color: #fff;
 }
+.translations {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	a {
+		padding: 12px;
+		margin: 0 5px;
+		font-size: 14px;
+		color: #333;
+		text-align: center;
+		border-right: 1px solid #fff;
+		cursor: pointer;
+		&.active {
+			color: #FCDC00;
+			background: #000;
+		}
+	}
+}

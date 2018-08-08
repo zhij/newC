@@ -403,14 +403,14 @@ body {
 	background-color: #000;
 	.bg {
 		display: block;
-		width: 1000px;
-		height: 1028px;
+		width: 1200px;
+		height: 1128px;
 		margin: 0 auto;
 		background: url(../img/item6-bg.png) no-repeat center;
-		background-size: cover;
+		background-size: 1000px 1228px;
 	}
 	.title {
-		padding-top: 50px;
+		padding-top: 40px;
 		color: #1ED6FF;
 		font-size: 30px;
 		text-align: center
@@ -419,7 +419,7 @@ body {
 		padding-top: 70px;
 	}
 	.sub-title {
-		padding-top: 28px;
+		padding-top: 18px;
 		color: #FF4CFF;
 		font-size: 30px;
 		text-align: center;
@@ -435,7 +435,10 @@ body {
 		}
 	}
 	.item-des-wrp {
-		padding: 28px 0 0;
+		padding: 18px 0 0;
+	}
+	.mt {
+		margin-top: -135px;
 	}
 	.item-des {
 		color: #fff;

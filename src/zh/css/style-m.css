@@ -539,3 +539,32 @@ body {
 
 .menu-layer .current a {
   color: #fff; }
+
+.translations {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 20px; }
+  .translations a {
+    padding: 12px;
+    margin: 0 5px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    border-right: 1px solid #fff;
+    cursor: pointer; }
+    .translations a.active {
+      color: #FCDC00;
+      background: #000; }
