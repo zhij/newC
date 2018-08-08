@@ -96,12 +96,13 @@ body {
         margin: .5rem auto .2rem; }
       .g-header .slide1 .top .p1 {
         width: 5.24rem;
-        height: 2.39rem; }
+        height: 2.39rem;
+        margin-top: -.2rem; }
     .g-header .slide1 .bottom .m-phone {
       position: relative;
       width: 6.58rem;
       height: 7.69rem;
-      margin-top: -.4rem;
+      margin-top: -.6rem;
       background: url(../img/m-phone-bg.png) no-repeat center;
       background-size: cover; }
       .g-header .slide1 .bottom .m-phone video, .g-header .slide1 .bottom .m-phone .poster {
