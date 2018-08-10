@@ -552,7 +552,8 @@ body {
     cursor: pointer; }
 
 .translations {
-  margin-top: 45px; }
+  float: right;
+  margin-top: 25px; }
   .translations a {
     padding: 0 12px;
     font-size: 14px;
@@ -560,9 +561,9 @@ body {
     border-right: 1px solid #fff;
     cursor: pointer; }
     .translations a.active {
-      color: #FCDC00; }
+      color: #000; }
     .translations a:last-child {
       padding-right: 0;
       border-right: none; }
     .translations a:hover {
-      color: #FCDC00; }
+      color: #000; }

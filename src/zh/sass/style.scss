@@ -631,7 +631,8 @@ body {
 	}	
 }
 .translations {
-	margin-top: 45px;
+	float: right;
+	margin-top: 25px;
 	a {
 		padding: 0 12px;
 		font-size: 14px;
@@ -639,14 +640,14 @@ body {
 		border-right: 1px solid #fff;
 		cursor: pointer;
 		&.active {
-			color: #FCDC00;
+			color: #000;
 		}
 		&:last-child {
 			padding-right: 0;
 			border-right: none;
 		}
 		&:hover {
-			color: #FCDC00;
+			color: #000;
 		}
 	}
 }
