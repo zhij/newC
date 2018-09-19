@@ -1,78 +1,113 @@
-$('#nav-list li').not(".book").mouseover(function(){
-	$(this).addClass("hover");
-}).mouseout(function(){
-	$(this).removeClass("hover");
-})
-$('#nav-list .link-item').click(function(){
-	$(this).parents("li").addClass("active").siblings("li").removeClass("active");
-})
-
-var heightList = [];
-var container = $(".g-container");
-
-var h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height();
-function calcHeight() {
-	heightList = [];
-	var scrollY = h;
-	heightList.push(scrollY);
-	for(var i=0; i<container.length-1; i++){
-		scrollY += container[i].clientHeight;
-		heightList.push(scrollY);
-	}
-	console.log(heightList)
-}
-
-calcHeight();
-
-$(document).scroll(function(){
-	if($(document).scrollTop() > h){
-		$('.g-nav').addClass('fixed');
-	} else {
-		$('.g-nav').removeClass('fixed');
-	}
-	// 返回顶部按钮
-	var screenHeight = document.documentElement.clientHeight || window.innerHeight || 750;
-	if($(document).scrollTop() >= screenHeight) {
-		$(".g-totop").fadeIn();
-	} else {
-		$(".g-totop").fadeOut();
-	}
-
-	for(var i=0; i<heightList.length; i++){
-		if($(document).scrollTop() >= heightList[i] && $(document).scrollTop() < heightList[i+1]){
-				$("#nav-list .link-item").parents("li").removeClass('active')
-				$("#nav-list .link-item").eq(i).parents("li").addClass('active')
-			
-		} else if($(document).scrollTop() >= heightList[heightList.length-1]){
-			$("#nav-list .link-item").parents("li").removeClass('active')
-			$("#nav-list .link-item").eq(heightList.length-1).parents("li").addClass('active')
-		}
-	}		
-})
-// 导航跳转到对应区域
-$(".link-item").click(function(){
-	var index = $(this).attr('index');
-	var scrollY = heightList[index]+3;
-	$('html').animate({ scrollTop: scrollY }, 700);
-})
-
-// 更多资讯
-$('#js-more').click(function(){
-	if($('#js-mask').css("display") == 'none'){
-		$('#js-mask').slideDown(function(){
-			h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height() + parseInt($('#js-mask').height())
-			calcHeight();
-		});
-
-	} else {
-		$('#js-mask').slideUp(function(){
-			h = $('.g-top').height() + $('.g-header').height() + parseInt($('.m-shadow').css('marginTop')) - $('.g-nav').height();
-			calcHeight();
-		});
-	}
-})
-
 // 返回顶部
 $(".scroll-top").click(function(){
 	 $('html').animate({ scrollTop: 0 }, 700);
 })
+
+$("#js-go-tree").click(function() {
+	$("html,body").animate({scrollTop: $("#js-tree").offset().top},500)
+})
+
+var treeData = {
+	yun: {
+		name: '云之树',
+		born: '长季生长',
+		desc: [
+			'长季生长，长季产晶更多',
+			'独一无二DNA编码 G0-1-1',
+			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
+			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
+			'每年返还32ETH，共返还4年，合计128ETH'
+		]
+	},
+	tan: {
+		name: '潭之树',
+		born: '生季生长',
+		desc: [
+			'生季生长，生季产晶更多',
+			'独一无二DNA编码 G0-1-1',
+			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
+			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
+			'每年返还32ETH，共返还4年，合计128ETH'
+		]
+	},
+	yan: {
+		name: '炎之树',
+		born: '长季生长',
+		desc: [
+			'长季生长，长季产晶更多',
+			'独一无二DNA编码 G0-1-1',
+			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
+			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
+			'每年返还32ETH，共返还4年，合计128ETH'
+		]
+	},
+	lei: {
+		name: '雷之树',
+		born: '生季生长',
+		desc: [
+			'生季生长，生季产晶更多',
+			'独一无二DNA编码 G0-1-1',
+			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
+			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
+			'每年返还32ETH，共返还4年，合计128ETH'
+		]
+	},
+	di: {
+		name: '地之树',
+		born: '藏季生长',
+		desc: [
+			'藏季生长，藏季产晶更多',
+			'独一无二DNA编码 G0-1-1',
+			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
+			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
+			'每年返还32ETH，共返还4年，合计128ETH'
+		]
+	},
+	mai: {
+		name: '脉之树',
+		born: '收季生长',
+		desc: [
+			'收季生长，收季产晶更多',
+			'独一无二DNA编码 G0-1-1',
+			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
+			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
+			'每年返还32ETH，共返还4年，合计128ETH'
+		]
+	},
+	liu: {
+		name: '流之树',
+		born: '藏季生长',
+		desc: [
+			'藏季生长，藏季产晶更多',
+			'独一无二DNA编码 G0-1-1',
+			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
+			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
+			'每年返还32ETH，共返还4年，合计128ETH'
+		]
+	},
+	feng: {
+		name: '风之树',
+		born: '收季生长',
+		desc: [
+			'收季生长，收季产晶更多',
+			'独一无二DNA编码 G0-1-1',
+			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
+			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
+			'每年返还32ETH，共返还4年，合计128ETH'
+		]
+	}
+}
+$("#js-tree li").click(function() {
+	var name = $(this).attr("name");
+	$("#js-tree-content .left img").attr("src", "img/big-"+ name + ".jpg");
+	$(this).addClass("active").siblings("li").removeClass("active");
+
+	var treeObj = treeData[name]
+	var descHtml = ''
+	for(var i=0; i<treeObj.desc.length; i++) {
+		descHtml += "<li>"+ treeObj.desc[i]+ "</li>"
+	}
+	$("#js-tree-desc").html(descHtml)
+	$("#js-tree-name").text(treeObj.name)
+})
+
