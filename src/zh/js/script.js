@@ -10,91 +10,43 @@ $("#js-go-tree").click(function() {
 var treeData = {
 	yun: {
 		name: '云之树',
-		born: '长季生长',
-		desc: [
-			'长季生长，长季产晶更多',
-			'独一无二DNA编码 G0-1-1',
-			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
-			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
-			'每年返还32ETH，共返还4年，合计128ETH'
-		]
+		total: 8,
+		stock: 7
 	},
 	tan: {
 		name: '潭之树',
-		born: '生季生长',
-		desc: [
-			'生季生长，生季产晶更多',
-			'独一无二DNA编码 G0-1-1',
-			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
-			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
-			'每年返还32ETH，共返还4年，合计128ETH'
-		]
+		total: 8,
+		stock: 0
 	},
 	yan: {
 		name: '炎之树',
-		born: '长季生长',
-		desc: [
-			'长季生长，长季产晶更多',
-			'独一无二DNA编码 G0-1-1',
-			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
-			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
-			'每年返还32ETH，共返还4年，合计128ETH'
-		]
+		total: 8,
+		stock: 8
 	},
 	lei: {
 		name: '雷之树',
-		born: '生季生长',
-		desc: [
-			'生季生长，生季产晶更多',
-			'独一无二DNA编码 G0-1-1',
-			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
-			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
-			'每年返还32ETH，共返还4年，合计128ETH'
-		]
+		total: 8,
+		stock: 8
 	},
 	di: {
 		name: '地之树',
-		born: '藏季生长',
-		desc: [
-			'藏季生长，藏季产晶更多',
-			'独一无二DNA编码 G0-1-1',
-			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
-			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
-			'每年返还32ETH，共返还4年，合计128ETH'
-		]
+		total: 8,
+		stock: 8
 	},
 	mai: {
 		name: '脉之树',
-		born: '收季生长',
-		desc: [
-			'收季生长，收季产晶更多',
-			'独一无二DNA编码 G0-1-1',
-			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
-			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
-			'每年返还32ETH，共返还4年，合计128ETH'
-		]
+		total: 8,
+		stock: 8
 	},
 	liu: {
 		name: '流之树',
-		born: '藏季生长',
-		desc: [
-			'藏季生长，藏季产晶更多',
-			'独一无二DNA编码 G0-1-1',
-			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
-			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
-			'每年返还32ETH，共返还4年，合计128ETH'
-		]
+		total: 8,
+		stock: 8
 	},
 	feng: {
 		name: '风之树',
-		born: '收季生长',
-		desc: [
-			'收季生长，收季产晶更多',
-			'独一无二DNA编码 G0-1-1',
-			'产晶质量 = 1.5 * 晶体纯度 * 季节因子 * 两极活跃因子（普通神木只有1）',
-			'0代纯种神木所产生的晶体可以单独孕育出下一代神木，种下后获得更多 晶体和碎片',
-			'每年返还32ETH，共返还4年，合计128ETH'
-		]
+		total: 8,
+		stock: 8
 	}
 }
 $("#js-tree li").click(function() {
@@ -103,11 +55,34 @@ $("#js-tree li").click(function() {
 	$(this).addClass("active").siblings("li").removeClass("active");
 
 	var treeObj = treeData[name]
-	var descHtml = ''
-	for(var i=0; i<treeObj.desc.length; i++) {
-		descHtml += "<li>"+ treeObj.desc[i]+ "</li>"
+	var descHtml = '';
+	var sellOut = treeObj.total - treeObj.stock
+
+	if(treeObj.stock == 0) {
+		descHtml = '已售罄'
+		$('#js-btn-buy').hide();
+	} else {
+		 descHtml = '已售' + sellOut + '棵，剩余' + treeObj.stock+ '棵';
+		$('#js-btn-buy').show();
 	}
-	$("#js-tree-desc").html(descHtml)
+	
+	$("#js-tree-status").text(descHtml)
 	$("#js-tree-name").text(treeObj.name)
+	$(this).children(".desc").text(treeObj.stock+' / '+treeObj.total)
 })
 
+function initTree() {
+	var list = $("#js-tree li");
+	var name = "", desc = ""
+	for	(var i=0; i<list.length; i++) {
+		name = $(list[i]).attr("name")
+		if (treeData[name].stock <= 0) {
+			desc = "已售罄"
+		} else {
+			desc = treeData[name].stock+' / '+treeData[name].total
+		}
+		$(list[i]).children(".desc").text(desc)
+	}
+}
+initTree();
+$("#js-tree li").eq(0).click();
