@@ -66,8 +66,10 @@ function getTreeData(callback) {
 		callback()
 	}, 2000)
 }
+var currentTreeName = ''
 $("#js-tree li").click(function() {
 	var name = $(this).attr("name");
+	currentTreeName = name
 	$("#js-tree-content .left img").attr("src", "img/big-"+ name + ".jpg");
 	$(this).addClass("active").siblings("li").removeClass("active");
 
@@ -88,7 +90,6 @@ $("#js-tree li").click(function() {
 	$("#js-tree-name").text(treeObj.name)
 	$(this).children(".desc").text(treeObj.stock+' / '+treeObj.total)
 })
-
 function initTree() {
 	var list = $("#js-tree li");
 	var name = "", desc = ""
@@ -107,4 +108,6 @@ getTreeData(function() {
 	$("#js-tree li").eq(0).click();
 })
 
-
+$('#js-btn-buy').click(function(){
+	console.log(currentTreeName)
+})

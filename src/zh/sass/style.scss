@@ -847,20 +847,23 @@ body {
 	float: right;
 	margin-top: 25px;
 	a {
+		display: inline-block;
 		padding: 0 12px;
 		font-size: 14px;
-		color: #fff;
-		border-right: 1px solid #fff;
+		height: 14px;
+		line-height: 14px;
+		color:#000000;
+		border-right: 2px solid #000;
 		cursor: pointer;
 		&.active {
-			color: #000;
+			color:#FCDD00;
 		}
 		&:last-child {
 			padding-right: 0;
 			border-right: none;
 		}
 		&:hover {
-			color: #000;
+			color: #FCDD00;
 		}
 	}
 }
